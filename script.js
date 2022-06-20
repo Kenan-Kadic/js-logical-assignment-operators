@@ -27,3 +27,55 @@ const restaurant = {
     },
   },
 };
+
+const rest1 = {
+  name: 'Capri',
+  numGuests: 20,
+};
+
+const rest2 = {
+  name: 'La Piazza',
+  owner: 'Giovanni Rossi'
+}
+
+// rest2.numGuests = rest1.numGuests || 10;
+// rest2.numGuests = rest2.numGuests || 10;
+
+// THIS IS A SHORTER VERSION OF THE OR SHORT CIRCUIT CODE ABOVE
+
+// THE OR ASSIGNMENT OPERATOR
+//this assigns a value to a variable if the variable is currently falsy
+
+// rest1.numGuests ||= 10;
+// rest2.numGuests ||= 10;
+//
+// console.log(rest1);
+// console.log(rest2);
+
+// This may not work if you start with 0 as the first value - which is falsy to start
+// be careful to zeros
+
+// THERE IS A FIX FOR THE ZERO CASE
+
+// the fix is
+
+// nullish assignment operator(null or undefined)
+// this code means make it 10 if it is null or undefined - otherwise use the value it is
+
+rest1.numGuests ??= 10;
+rest2.numGuests ??= 10;
+
+rest1.owner = rest1.owner && '<ANNONYMOUS>'
+rest2.owner = rest2.owner && '<ANNONYMOUS>'
+
+// and prints the first falsy value
+console.log(rest1)
+// this will give you undefined for owner
+
+console.log(rest2)
+// this will give you <ANNONYMOUS> for owner
+
+// assigns a value to a variable if it is currently truthy
+// otherwise it is not even there so nothing happens
+rest1.owner &&= '<ANNONYMOUS>';
+rest2.owner &&= '<ANNONYMOUS>';
